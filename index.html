@@ -3,11 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--JQuery-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!--Fonts-->
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+
+    <!--My CSS-->
+    <link rel="stylesheet" href="style.css">
     <title>Blackjack</title>
 </head>
 <body>
+    <button id="dealBtn" class="button">Deal</button>
+    <button id="hitBtn" class="button">Hit</button>
+    <button id="stickBtn" class="button">Stick</button>
+
+    <div id="dealersHand" class="hand">
+
+    </div>
     
+    <div id="playersHand" class="hand">
+
+    </div>
 </body>
 
-<script src="script.js"></script>
+<script src="deck.js"></script>
+<script src="Players.js"></script>
+<script src="main.js"></script>
 </html>
