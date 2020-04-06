@@ -14,23 +14,85 @@
 
     <!--My CSS-->
     <link rel="stylesheet" href="style.css">
+
+    <!--Setting up inital state of page-->
+    <script>
+        $(document).ready(() => {
+            $('#instructions').css("display", "block");
+
+            $("#hitBtn").attr("disabled", true);
+            $("#standBtn").attr("disabled", true);
+            $("#playerScore").text("0");
+            $("#dealerScore").text("0");
+            $("#playerWins").text("0");
+            $("#dealerWins").text("0");
+        });
+    </script>
+
     <title>Blackjack</title>
 </head>
+
 <body>
-    <button id="dealBtn" class="button">Deal</button>
-    <button id="hitBtn" class="button">Hit</button>
-    <button id="stickBtn" class="button">Stick</button>
+    <header>
+            <button id="dealBtn" class="button">Deal</button>
+            <button id="hitBtn" class="button">Hit</button>
+            <button id="standBtn" class="button">Stand</button>
+            <div class="scoreBox">
+                <p>Dealer Score:&ensp;<span id="dealerScore"></span></p>
+                <p>Player Score:&ensp;<span id="playerScore"></span></p>
+            </div>
+            <div class="scoreBox">
+                <p>Dealer Wins:&ensp;<span id="dealerWins"></span></p>
+                <p>Player Wins:&ensp;<span id="playerWins"></span></p>
+            </div>
+            <button id="instrBtn" class="button">Show Instructions</button>
+    </header>
+
+    <div id="narrator">
+        <p id="narratorText">Press 'Deal' button above to start.</p>
+    </div>
 
     <div id="dealersHand" class="hand">
 
     </div>
-    
+
     <div id="playersHand" class="hand">
 
     </div>
-</body>
 
-<script src="deck.js"></script>
-<script src="Players.js"></script>
-<script src="main.js"></script>
+    <!-- MODAL FOR INSTRUCTIONS-->
+    <div id="instructions" class="modal">
+
+        <div class="modalContent">
+            <div class="modalHeader">
+                <span class="close">&times;</span>
+                <h2>Instructions for Blackjack</h2>
+            </div>
+            <div class="modalBody">
+                <p>Upon pressing the 'Deal' button, you and the dealer will be dealt two cards each.</p>
+                <p>The dealer's cards will be dealt one exposed and one hidden.</p>
+                <p>Your aim is to have the sum of your cards' values be greater than the dealers, without going over 21.</p>
+                <p>All number cards have the value displayed on the card (2 through 10).</p>
+                <p>Face cards (Jack, Queen, King) are all worth 10 and an Ace can either equal 11 or 1.</p>
+                <p>You can attempt to increase the score of your hand being pressing 'Hit' and being dealt a new card.</p>
+                <p>If your score exceeds 21 and you have an Ace with value 11 in your hand, it will automatically set its value to 1</p>
+                <p>Once you are happy with your hand, press the 'Stand' button.</p>
+                <p>The dealer will then reveal their hidden card and will 'Hit' until their score is at least 17.</p>
+                <p>Once the dealer's score is at least 17 they will stand.</p>
+                <p>If your score exceeds 21 you 'bust' and you lose, even if the dealer's score exceeds 21.</p>
+                <p>If the dealer 'busts' and you do not, you win.</p>
+                <p>If your final score is higher than the dealer's and the dealer does not go bust, you win.</p>
+                <p>If both you and the dealer have the same score, it's a tie.</p>
+                <p>Good luck!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="src/modal.js"></script>
+    <script src="src/deck.js"></script>
+    <script src="src/Players.js"></script>
+    <script src="src/deal.js"></script>
+    <script src="src/stand.js"></script>
+    <script src="src/main.js"></script>
+</body>
 </html>
